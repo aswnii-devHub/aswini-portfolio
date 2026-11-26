@@ -57,7 +57,7 @@ export function ProjectShowcase({ projects }: ProjectShowcaseProps) {
         <div className="project-editorial-heading">
           <div>
             <p className="section-kicker">Some things I've built</p>
-            <h2 className="section-title">Selected projects.</h2>
+            <h2 className="section-title">Projects.</h2>
             <p className="project-section-intro">
               A collection of projects where I've turned ideas into practical solutions.
             </p>
