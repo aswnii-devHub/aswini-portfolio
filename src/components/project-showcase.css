@@ -1,0 +1,280 @@
+
+.project-showcase-section {
+  position: relative;
+  overflow: hidden;
+}
+
+.project-editorial-heading {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 2rem;
+  margin-bottom: 2.1rem;
+}
+
+.project-section-intro {
+  max-width: 34rem;
+  margin-top: 0.85rem;
+  color: var(--color-muted-foreground);
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+
+.project-count {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding-bottom: 0.45rem;
+  color: var(--color-muted-foreground);
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  white-space: nowrap;
+}
+
+.project-count span {
+  color: var(--color-primary);
+  font-size: 1.15rem;
+  font-weight: 700;
+}
+
+.project-editorial-list {
+  border-top: 1px solid var(--color-border);
+}
+
+.project-editorial-row {
+  position: relative;
+  display: grid;
+  grid-template-columns: 3.5rem minmax(0, 1fr) minmax(15rem, 0.8fr);
+  align-items: center;
+  gap: 1.25rem;
+  overflow: hidden;
+  border-bottom: 1px solid var(--color-border);
+  padding: 1.8rem 0.55rem;
+  isolation: isolate;
+}
+
+/* The pale teal sweep moves across the row on hover. */
+.project-editorial-row::before {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  background: color-mix(in oklch, var(--color-primary) 8%, var(--color-soft));
+  content: "";
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 480ms cubic-bezier(0.2, 0.75, 0.25, 1);
+}
+
+.project-editorial-row:hover::before,
+.project-editorial-row:focus-within::before {
+  transform: scaleX(1);
+}
+
+/* Rows slide in one after another when the section enters the viewport. */
+.project-editorial-row {
+  opacity: 0;
+  transform: translateX(-2rem);
+}
+
+.projects-visible .project-editorial-row {
+  animation: project-row-enter 720ms cubic-bezier(0.2, 0.75, 0.25, 1) both;
+  animation-delay: var(--project-delay, 0ms);
+}
+
+@keyframes project-row-enter {
+  from {
+    opacity: 0;
+    transform: translateX(-2rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.project-editorial-number {
+  align-self: start;
+  padding-top: 0.15rem;
+  color: var(--color-primary);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  transition: transform 280ms ease;
+}
+
+.project-editorial-row:hover .project-editorial-number {
+  transform: translateX(0.35rem);
+}
+
+.project-editorial-copy,
+.project-editorial-meta {
+  position: relative;
+  z-index: 1;
+  min-width: 0;
+}
+
+.project-editorial-category {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  color: var(--color-muted-foreground);
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  letter-spacing: 0.1em;
+}
+
+.project-editorial-category i {
+  width: 0.42rem;
+  height: 0.42rem;
+  border-radius: 50%;
+  background: var(--color-primary);
+  box-shadow: 0 0 0 4px color-mix(in oklch, var(--color-primary) 13%, transparent);
+}
+
+.project-editorial-copy h3 {
+  margin-top: 0.65rem;
+  color: var(--color-foreground);
+  font-family: var(--font-display);
+  font-size: clamp(1.25rem, 2.2vw, 1.65rem);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  line-height: 1.2;
+  transition: color 220ms ease;
+}
+
+.project-editorial-row:hover .project-editorial-copy h3 {
+  color: color-mix(in oklch, var(--color-primary) 78%, var(--color-foreground));
+}
+
+.project-editorial-copy p {
+  max-width: 39rem;
+  margin-top: 0.65rem;
+  color: var(--color-muted-foreground);
+  font-size: 0.8rem;
+  line-height: 1.8;
+}
+
+.project-editorial-meta {
+  display: flex;
+  align-items: flex-end;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.project-editorial-tech {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 0.4rem;
+}
+
+.project-editorial-tech span {
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  background: color-mix(in oklch, var(--color-background) 72%, transparent);
+  padding: 0.35rem 0.58rem;
+  color: var(--color-muted-foreground);
+  font-family: var(--font-mono);
+  font-size: 0.56rem;
+  transition: border-color 220ms ease, background 220ms ease, transform 220ms ease;
+}
+
+.project-editorial-row:hover .project-editorial-tech span {
+  border-color: color-mix(in oklch, var(--color-primary) 35%, var(--color-border));
+  background: var(--color-background);
+  transform: translateY(-2px);
+}
+
+.project-editorial-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 1.1rem;
+}
+
+.project-editorial-links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  transition: color 200ms ease, gap 200ms ease;
+}
+
+.project-editorial-live {
+  color: var(--color-primary);
+}
+
+.project-editorial-live:hover {
+  gap: 0.65rem;
+}
+
+.project-editorial-source {
+  color: var(--color-muted-foreground);
+}
+
+.project-editorial-source:hover {
+  color: var(--color-foreground);
+}
+
+@media (max-width: 900px) {
+  .project-editorial-row {
+    grid-template-columns: 2.5rem minmax(0, 1fr);
+    gap: 0.9rem 1rem;
+  }
+
+  .project-editorial-meta {
+    grid-column: 2;
+    align-items: flex-start;
+  }
+
+  .project-editorial-tech,
+  .project-editorial-links {
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 620px) {
+  .project-editorial-heading {
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .project-count {
+    padding-top: 0.4rem;
+  }
+
+  .project-editorial-row {
+    grid-template-columns: 1.7rem minmax(0, 1fr);
+    gap: 0.75rem;
+    padding: 1.5rem 0.25rem;
+  }
+
+  .project-editorial-copy p {
+    font-size: 0.76rem;
+  }
+
+  .project-editorial-meta {
+    gap: 0.85rem;
+  }
+
+  .project-editorial-tech span {
+    font-size: 0.52rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .project-editorial-row,
+  .projects-visible .project-editorial-row {
+    animation: none !important;
+    opacity: 1;
+    transform: none;
+  }
+
+  .project-editorial-row::before,
+  .project-editorial-row *,
+  .project-editorial-row *::before,
+  .project-editorial-row *::after {
+    transition: none !important;
+  }
+}
