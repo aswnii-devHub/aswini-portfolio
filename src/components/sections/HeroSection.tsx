@@ -140,10 +140,10 @@ export function HeroSection() {
             </div>
           </div>
           <div className="hero-float-chip hero-chip-top">
-            <span>✳</span> React ecosystem
+            React ecosystem
           </div>
           <div className="hero-float-chip hero-chip-bottom">
-            <span>✓</span> Quality-minded development
+            Quality-minded development
           </div>
         </Reveal>
       </div>
